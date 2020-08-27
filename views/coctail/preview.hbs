@@ -1,8 +1,28 @@
-<script defer src="js/preview.js" ></script>
-
-
+<script defer src="js/preview.js"></script>
 <form id="serchTitle">
-  <input type="text" name="name" id="serch" placeholder="Введите название коктеля"> 
+  <input type="text" name="name" id="serch" placeholder="Введите название коктеля">
 
   <button type="submit">click</button>
 </form>
+
+<div class="cardBox">
+  {{#each allCocktall}}
+  <div class="card" style="width: 18rem;">
+    <img src="../img/icon_Bacardi_shooting_5_800.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{this.title}}</h5>
+
+      <p class="card-text">Рецепт:{{this.recipe}}</p>
+      <p class="card-text">Необходимые ингредиенты:{{this.ingredients}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{this.filters}}</li>
+      <li class="list-group-item">{{this.titleEng}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Подробнее</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+  {{/each}}
+</div>
