@@ -71,6 +71,7 @@ let result = [];
   //  data.ingredients = final;
   // console.log(final);
   
+  
   const oneCocktail = await new Cocktail({
     title: data.title,
     titleEng: data.titleEng,
