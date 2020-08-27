@@ -4,6 +4,7 @@ const { middleware } = require('./middleware')
 const registerRouter = require('./routes/register')
 const loginRouter = require('./routes/login')
 const mainRouter = require('./routes/main');
+const previewRouter = require('./routes/preview')
 const {sessionChecker}= require('./middleware/sessionChecker'); // деструктуризация обязательно и ниже тоже
 const {sessionConfig} = require('./middleware/sessionConfig');
 const {request} = require('./helpers/imgScrapper')
@@ -21,7 +22,7 @@ app.get('/', (req,res)=>{
 app.use('/main',mainRouter)
 app.use('/login',loginRouter);
 app.use('/register',registerRouter)
-
+app.use('/preview',previewRouter)
 
 module.exports = app;
 

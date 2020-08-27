@@ -9,6 +9,5 @@ module.exports = mongoose.model("cocktail", {
   volume: Number,
   sizes: String,
   recipe: String,
-  description: String,
 });
 
