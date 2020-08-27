@@ -11,7 +11,7 @@ let result=[];
   for (let i = 70; i < 75; i++) {
     cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
     simpleParser(cocktailUrl)
-  }
+  // }
   // }
   // counter();
   // console.table(result);
