@@ -9,7 +9,7 @@ let dataArray =[];
 let result=[];
 // async function counter (){
 
-for (let i = 35; i < 45; i++) {
+// for (let i = 35; i < 45; i++) {
 cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
 
     simpleParser(cocktailUrl)

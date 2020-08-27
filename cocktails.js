@@ -5,8 +5,8 @@ const Cocktail = require('./models/cocktail')
 
 async function changeCockt(){
   const cockt  = await Cocktail.findOne({})
-  const newCockt = cockt.toString()
-  newCockt.split( )
+  const newCockt = cockt.
+  console.log(typeof cockt);
 
 
 }
