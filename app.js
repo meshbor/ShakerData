@@ -6,9 +6,12 @@ const loginRouter = require('./routes/login')
 const mainRouter = require('./routes/main');
 const {sessionChecker}= require('./middleware/sessionChecker'); // деструктуризация обязательно и ниже тоже
 const {sessionConfig} = require('./middleware/sessionConfig');
+const {request} = require('./helpers/imgScrapper')
 
 middleware(app);
 sessionConfig(app); // юзает наш апп
+
+
 
 app.get('/', (req,res)=>{
   res.render('main')
