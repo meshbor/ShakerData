@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const mongoose = require('mongoose');
 require('events').EventEmitter.defaultMaxListeners = 25;
-mongoose.connect('mongodb://localhost/cocktailBase', {useNewUrlParser: true, useUnifiedTopology:true});
+mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const Cocktail = require('./models/cocktail')
 
@@ -22,33 +22,32 @@ const PAGE_PUPPETEER_OPTS = {
   timeout: 3000000
 };
 
-let cocktailUrl ='';
-let dataArray =[];
-let result=[];
-// async function counter (){
+let cocktailUrl = '';
+let dataArray = [];
+let result = [];
 
-// for (let i = 35; i < 45; i++) {
-cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
 
+  for (let i =  50; i < 55; i++) {
+    cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
     simpleParser(cocktailUrl)
-  // }
-  // }
-  // counter();
-  // console.table(result);
+  }
   
-async function simpleParser(cocktailUrl){ 
-  
+
+
+ async function simpleParser(cocktailUrl) {
+
   let browser = await puppeteer.launch(PAGE_PUPPETEER_OPTS); // init browser by ppt
-  let page = await browser.newPage(); 
-  
+  let page = await browser.newPage();
+
   await page.goto(cocktailUrl, PAGE_PUPPETEER_OPTS); // ppt goes to this movie url
-  
-  let data = await page.evaluate(()=>{  //  this func allows to evaluate anything in that page, that we add
-    
+
+  let data = await page.evaluate(() => {  //  this func allows to evaluate anything in that page, that we add
+
     let title = document.querySelector('h1[class="common-name"]').innerText;
-    let titleEng= document.querySelector('div[class="name-en"]').innerText;
+    let titleEng = document.querySelector('div[class="name-en"]').innerText;
     let filters = document.querySelector('ul[class="tags"]').innerText;
     let ingredients = document.querySelector('div[class="ingredient-tables"]').innerText
+    // let nameofIngr = document.querySelector('tr').innerText
     let recipe = document.querySelector('ul[class="steps"]').innerText
     let description = document.querySelector('blockquote[class="body"]').innerText
     
@@ -61,20 +60,35 @@ async function simpleParser(cocktailUrl){
       description,
     };
   });
+  
+  let ingredientsTemp = [];
+  ingredientsTemp.push(data.ingredients);
+  let newArray = ingredientsTemp.map(el => {
+    return  el.replace(/(?=[А-Я])/g, ' ').trim()
+  })
+    newArray = newArray[0].split('Необходимые');
+   const final = newArray.map(el=> el.length ? 'Необходимые ' + el : `name ${data.title}`)
+  //  data.ingredients = final;
+  // console.log(final);
+  
   const oneCocktail = await new Cocktail({
     title: data.title,
     titleEng: data.titleEng,
     filters: data.filters,
-    ingredients : data.ingredients,
+    ingredients: final,
     recipe: data.recipe,
     description: data.description,
   })
   console.log(data);
   // console.table(dataArray);
   await oneCocktail.save()
-  dataArray.push(data)
-  await browser.close();
-
   
+  await browser.close();
+  
+  return data;
 }
+
+
+
+ 
 

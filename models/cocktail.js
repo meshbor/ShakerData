@@ -6,8 +6,10 @@ module.exports = mongoose.model("cocktail", {
   filters: String,
   img: String,
   ingredients : String,
+  nameofIngr: String,
   volume: Number,
   sizes: String,
   recipe: String,
+  description: String,
 });
 
