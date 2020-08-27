@@ -1,8 +1,26 @@
 const puppeteer = require('puppeteer');
 const mongoose = require('mongoose');
+require('events').EventEmitter.defaultMaxListeners = 25;
 mongoose.connect('mongodb://localhost/cocktailBase', {useNewUrlParser: true, useUnifiedTopology:true});
 
 const Cocktail = require('./models/cocktail')
+
+const LAUNCH_PUPPETEER_OPTS = {
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--disable-gpu',
+    '--window-size=1920x1080'
+  ]
+};
+
+const PAGE_PUPPETEER_OPTS = {
+  networkIdle2Timeout: 5000,
+  waitUntil: 'networkidle2',
+  timeout: 3000000
+};
 
 let cocktailUrl ='';
 let dataArray =[];
@@ -20,10 +38,10 @@ cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
   
 async function simpleParser(cocktailUrl){ 
   
-  let browser = await puppeteer.launch(); // init browser by ppt
+  let browser = await puppeteer.launch(PAGE_PUPPETEER_OPTS); // init browser by ppt
   let page = await browser.newPage(); 
   
-  await page.goto(cocktailUrl, {waitUntil: "networkidle2"}); // ppt goes to this movie url
+  await page.goto(cocktailUrl, PAGE_PUPPETEER_OPTS); // ppt goes to this movie url
   
   let data = await page.evaluate(()=>{  //  this func allows to evaluate anything in that page, that we add
     
@@ -56,5 +74,7 @@ async function simpleParser(cocktailUrl){
   await oneCocktail.save()
   dataArray.push(data)
   await browser.close();
+
+  
 }
 

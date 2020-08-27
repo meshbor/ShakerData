@@ -1,18 +1,24 @@
+let express = require('express');
+let app = express();
+let request = require('request');
+let cheerio = require('cheerio');
+let port = 8080;
 
-function imgScrapper() {
-  // 1. load dependencies
-  let cheerio = require('cheerio'),
-    request = require('request'),
-    url = require('url');
+let url = "https://ru.inshaker.com/cocktails/90-aviatsiya";
 
-  let page_url = 'https://ru.inshaker.com/cocktails/56-myatnyy-dzhulep';
-  let results = [];
+let content = [];
 
-}
+request(url, function(err, res, body) {
+  let $ = cheerio.load(body);
+    $('enclosure').each(function(i, elem) {
+    	content.push($(this).attr('url'));
+   });
+    for (let i = 0; i<content.length; i++) {     
+      console.log(content[i]);   
+    }
+});
+
+app.listen(port);
 
 
-
-
-
-
-module.exports = { imgScrapper }
+module.exports = { request() }
