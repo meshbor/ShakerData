@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/cocktailBase', {useNewUrlParser: true, useUnifiedTopology:true});
+// mongoose.connect('mongodb://localhost/cocktailBase', {useNewUrlParser: true, useUnifiedTopology:true});
 
 const Cocktail = require('./models/cocktail')
 
