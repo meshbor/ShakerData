@@ -20,6 +20,7 @@
     "mongoose": "^5.10.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
+    "puppeteer": "^5.2.1",
     "session-file-store": "^1.4.0"
   }
 }
