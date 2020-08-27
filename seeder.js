@@ -8,7 +8,7 @@ let cocktailUrl ='';
 let dataArray =[];
 let result=[];
 // async function counter (){
-  for (let i = 70; i < 75; i++) {
+  for (let i = 35; i < 45; i++) {
     cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
     simpleParser(cocktailUrl)
   // }
@@ -25,19 +25,29 @@ async function simpleParser(cocktailUrl){
   
   let data = await page.evaluate(()=>{  //  this func allows to evaluate anything in that page, that we add
     
-    let title = document.querySelector('h1[class="common-name"]').innerText
+    let title = document.querySelector('h1[class="common-name"]').innerText;
+    let titleEng= document.querySelector('div[class="name-en"]').innerText;
+    let filters = document.querySelector('ul[class="tags"]').innerText;
     let ingredients = document.querySelector('div[class="ingredient-tables"]').innerText
     let recipe = document.querySelector('ul[class="steps"]').innerText
+    let description = document.querySelector('blockquote[class="body"]').innerText
+    
     return {
       title,
+      titleEng,
+      filters,
       ingredients,
       recipe,
+      description,
     };
   });
   const oneCocktail = await new Cocktail({
     title: data.title,
+    titleEng: data.titleEng,
+    filters: data.filters,
     ingredients : data.ingredients,
     recipe: data.recipe,
+    description: data.description,
   })
   console.log(data);
   // console.table(dataArray);
