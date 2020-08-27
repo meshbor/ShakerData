@@ -8,10 +8,12 @@ let cocktailUrl ='';
 let dataArray =[];
 let result=[];
 // async function counter (){
-  for (let i = 75; i < 95; i++) {
-    cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
+
+for (let i = 35; i < 45; i++) {
+cocktailUrl = `https://ru.inshaker.com/cocktails/${i}`;
+
     simpleParser(cocktailUrl)
-  }
+  // }
   // }
   // counter();
   // console.table(result);
