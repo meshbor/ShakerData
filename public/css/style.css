@@ -1,0 +1,11 @@
+
+
+.cardBox{
+  display: flex;
+  justify-content:space-around;
+  align-items:flex-start;
+  
+}
+.card{
+  margin: 30px;
+}

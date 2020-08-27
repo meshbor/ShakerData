@@ -6,7 +6,7 @@ function middleware(app){
   const cookieMonster = require('cookie-parser')
   const mongoose = require('mongoose')
 
-  mongoose.connect('mongodb://localhost/GrishaProject', {useNewUrlParser: true, useUnifiedTopology:true});
+  // mongoose.connect('mongodb://localhost/GrishaProject', {useNewUrlParser: true, useUnifiedTopology:true});
 
   app.use(morgan('dev'));
   app.use(cookieMonster())

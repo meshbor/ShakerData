@@ -1,17 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('express');
-const Cocktail = require('../models/cocktail')
+const mongoose = require('mongoose');
+const Cocktail = require('../models/cocktail.js')
+
+// mongoose.connect('mongodb://localhost/cocktailBase', { useNewUrlParser: true, useUnifiedTopology: true });
 router.route('/')
-  .get((req, res) => {
-    res.render('coctail/preview')
+  .get(async (req, res) => {
+    const allCocktall = await Cocktail.find({},{_id: 0})
+    res.render('coctail/preview', { allCocktall })
   })
+  //.limit(10){title:`${ qweryInSerch }`}
   .post(async (req, res) => {
     const { qweryInSerch } = req.body;
-    const selectCocktail = await Cocktail.find({
-      title:{ $gt: '50' }
-    })
+    console.log(qweryInSerch);
+    const selectCocktail = await Cocktail.find({ title: `${qweryInSerch}` })
+
+    const selectCocktailIngrdients = await Cocktail.find({ ingredients: { $regex: `${qweryInSerch}`, $options: "i" } })
+
+    const selectCocktailRecipe = await Cocktail.find({ recipe: { $regex: `${qweryInSerch}`, $options: "i" } })
+
     console.log(selectCocktail);
+    console.log(selectCocktailIngrdients);
+    console.log(selectCocktailRecipe);
   })
+
+
+
+
 
 module.exports = router;

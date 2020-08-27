@@ -76,7 +76,7 @@ let result = [];
     title: data.title,
     titleEng: data.titleEng,
     filters: data.filters,
-    ingredients: final,
+    ingredients: data.ingredients,
     recipe: data.recipe,
     description: data.description,
   })
@@ -88,8 +88,3 @@ let result = [];
   
   return data;
 }
-
-
-
- 
-
