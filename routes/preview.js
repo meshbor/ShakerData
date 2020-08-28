@@ -20,8 +20,8 @@ router.route('/')
     const selectCocktailRecipe = await Cocktail.find({ recipe: { $regex: `${qweryInSerch}`, $options: "i" } })
 
     console.log(selectCocktail);
-    console.log(selectCocktailIngrdients);
-    console.log(selectCocktailRecipe);
+    // console.log(selectCocktailIngrdients);
+    // console.log(selectCocktailRecipe);
   })
 
 
