@@ -10,7 +10,11 @@ let counter = 1;
 // async function parser(page,counter) {
   
   let page = 20;
+<<<<<<< HEAD
 while (page<100) {
+=======
+while (page<50) {
+>>>>>>> b19c5034783786017f3729a50bf5a60d71a5b553
 
 async function pars(page){
 

@@ -11,18 +11,16 @@
     <img src={{this.img}}  class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{this.title}}</h5>
-
-      <p class="card-text">Рецепт:{{this.recipe}}</p>
-      <p class="card-text">Необходимые ингредиенты:{{this.ingredients}}</p>
-    </div>
+</div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">{{this.filters}}</li>
       <li class="list-group-item">{{this.titleEng}}</li>
     </ul>
     <div class="card-body">
-      <a href="#" class="card-link">Подробнее</a>
+      <a href="/preview/{{this.id}}" class="card-link">Подробнее</a>
       <a href="#" class="card-link">Another link</a>
     </div>
   </div>
   {{/each}}
 </div>
+
