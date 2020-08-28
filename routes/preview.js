@@ -26,19 +26,19 @@ router.route('/')
     res.end()
   })
 
-router.get('/choosen',async (req, res) => {
+router.get('coctail/choosen',async (req, res) => {
   const { name } = req.query;
   console.log(name);
   const lost = await Cocktail.findOne({ title: `${name}`})
 
-  res.render('choosen', {lost})
+  res.render('coctail/choosen', {lost})
 })
 
 router.post('/choosen', async (req, res) => {
   const { qweryInSerch } = req.body;
   console.log(qweryInSerch);
   // const selectCocktail = await Cocktail.find({ title: `${qweryInSerch}` })
-  res.render('choosen', selectCocktail)
+  res.render('coctail/choosen',{ qweryInSerch })
 })
 
 router.get('/:id', async (req, res, next) => {
