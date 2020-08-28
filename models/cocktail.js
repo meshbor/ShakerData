@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 module.exports = mongoose.model("cocktail", {
   title: String,
   titleEng: String,
-  filters: String,
+  filters: Array,
   img: String,
-  ingredients : String,
+  ingredients : Array,
   nameofIngr: String,
   volume: Number,
   sizes: String,
