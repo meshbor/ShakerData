@@ -4,28 +4,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
 const Cocktail = require('./models/cocktail')
 const Order = require('./models/order');
-const order = require('./models/order');
 
-async function oneOrder(title,volume) {
-  
-  const oneExample = await Cocktail.findOne({ title: `${title}`})
-  for (let i = 0; i < oneExample.ingredients.length; i++) {
-       oneExample.ingredients[i][1] = oneExample.ingredients[i][1] * volume;
-       const order = await new Order({
-         ingredients : oneExample.ingredients[i][0],
-         volume: oneExample.ingredients[i][1],
-         sizes: oneExample.ingredients[i][2],
-       })
-       console.log(order);
-       await order.save();
-      
-  }
-
-  return oneExample
-
-}
-
-// oneOrder('Московский мул',1)
 
 let arrayofValue = [
   ['Черный русский',10],
@@ -36,8 +15,9 @@ let arrayofValue = [
   ['Виски сауэр',10],
   ['Белый русский',10],
   ['Дайкири',10],
-  ['Кровавая Мэри',10],
+  ['Кровавая Мэри',700],
   ['Московский мул',12],
+
  
 ]
 
@@ -75,28 +55,3 @@ for (let i = 0; i < arrayofValue.length; i++) {
 
 }
 fullOrder(arrayofValue);
-
-// [["Водка Finlandia","50","мл"],["Кофейный ликер BOLS","25","мл"],["Лед в кубиках ","120","г"]]
-
-
-//   [ 'Водка Finlandia', '50', 'мл' ],
-//   [ 'Лаймовый сок ', '10', 'мл' ],
-//   [ 'Имбирное пиво ', '100', 'мл' ],
-//   [ 'Лайм ', '20', 'г' ],
-//   [ 'Лед в кубиках ', '200', 'г' ]
-// ],
-// _id: 5f48c38b24a3917b3ec94dc0,
-// title: 'Московский мул',
-
-//     [ 'Выдержанный ром ', '45', 'мл' ],
-//     [ 'Дюбонне ', '15', 'мл' ],
-//     [ 'Апероль Aperol', '15', 'мл' ],
-//     [ 'Какао ликер коричневый BOLS', '5', 'мл' ],
-//     [ 'Херес манзанилья ', '15', 'мл' ],
-//     [ 'Ревеневый биттер ', '1', 'мл' ],
-//     [ 'Лимонная цедра ', '1', 'шт' ],
-//     [ 'Лед в кубиках ', '420', 'г' ]
-//   ],
-//   _id: 5f48c38124a3917b3ec94d8b,
-//   title: 'Иностранный легион', 10
-  
