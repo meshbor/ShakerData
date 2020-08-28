@@ -9,3 +9,14 @@
 .card{
   margin: 30px;
 }
+
+body{
+  
+  background:
+    linear-gradient(
+    rgba(246,247,249,0.8),
+    rgba(246,247,249,0.8)),
+    url(../img/a.jpg) no-repeat center center fixed;
+  background-size: cover;
+ 
+}

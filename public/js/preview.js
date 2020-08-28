@@ -15,3 +15,13 @@ input.addEventListener('submit', async (e) => {
   })
   const result = await response.json
 })
+
+
+// router.get('/show-one-entry/:id', async (req, res, next) => {
+//   const entry = await Entry.findById(req.params.id)
+//   console.log(entry);
+//   return res.render('entries/show', {
+//     entry, dateCond: (entry.createdAt == entry.updatedAt)
+//   });
+// });
+
