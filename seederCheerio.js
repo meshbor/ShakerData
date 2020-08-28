@@ -12,6 +12,7 @@ let counter = 1;
   let page = 1;
 while (page<400) {
 
+
 async function pars(page){
 
   let url = `https://ru.inshaker.com/cocktails/${page}`
