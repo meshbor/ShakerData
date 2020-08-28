@@ -6,7 +6,8 @@ const Cocktail = require('../models/cocktail.js')
 // mongoose.connect('mongodb://localhost/cocktailBase', { useNewUrlParser: true, useUnifiedTopology: true });
 router.route('/')
   .get(async (req, res) => {
-    const allCocktall = await Cocktail.find({},{_id: 0})
+    const allCocktall = await Cocktail.findOne({},{_id: 0})
+ 
     res.render('coctail/preview', { allCocktall })
   })
   //.limit(10){title:`${ qweryInSerch }`}
