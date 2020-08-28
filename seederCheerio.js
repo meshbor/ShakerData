@@ -9,8 +9,8 @@ const Cocktail = require('./models/cocktail')
 let counter = 1;
 // async function parser(page,counter) {
   
-  let page = 24;
-while (page<25) {
+  let page = 20;
+while (page<50) {
 
 async function pars(page){
 
