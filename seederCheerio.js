@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
 const Cocktail = require('./models/cocktail')
 
-let page = 1;
 let counter = 1;
 // async function parser(page,counter) {
-
-while (page<40) {
+  
+  let page = 150;
+while (page<200) {
 
 async function pars(page){
 
@@ -31,6 +31,7 @@ await request(url, async (error,response,html) =>{
     let arrayOfUnit = [];
     let cocktailArray = []
     let tagsArray = [];
+    let urlString = '';
     $('.js-tracking-ingredient').each( (i, elem) => {
       const item = $(elem).text();
       // ingred[`name_${i}`] = item;
@@ -53,11 +54,18 @@ await request(url, async (error,response,html) =>{
       const tags = $(elem).text();
       tagsArray[i]= tags;
     });
+    $('.image').each( (i, elem) => {
+      const img = $(elem)
+     .attr('src');
+      urlString=`https://ru.inshaker.com/${img}`;
+    });
+    
 
     let oneCocktail = await new Cocktail ({
       title: title,
       titleEng: titleEn,
       filters: tagsArray,
+      img: urlString,
       ingredients : cocktailArray,
       recipe: recipe,
       description: description,
@@ -72,11 +80,3 @@ await request(url, async (error,response,html) =>{
 page+=1;
 pars(page)
 }
-// counter+=1;
-// if (page<40) {
-//   console.log(`keep going >>>${counter}`);  }
-//  await parser(page,counter)
-
-// }
-
-// parser(page,counter);
