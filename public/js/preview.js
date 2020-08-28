@@ -13,15 +13,10 @@ input.addEventListener('submit', async (e) => {
       qweryInSerch
     })
   })
-  const result = await response.json
+  // const result = await response.json
+  if(response.status === 200){
+    window.location = 'choosen/?name=shalom'
 })
 
 
-// router.get('/show-one-entry/:id', async (req, res, next) => {
-//   const entry = await Entry.findById(req.params.id)
-//   console.log(entry);
-//   return res.render('entries/show', {
-//     entry, dateCond: (entry.createdAt == entry.updatedAt)
-//   });
-// });
 
