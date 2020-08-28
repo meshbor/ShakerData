@@ -26,7 +26,7 @@ router.route('/')
     res.end()
   })
 
-router.get('coctail/choosen',async (req, res) => {
+router.get('/choosen',async (req, res) => {
   const { name } = req.query;
   console.log(name);
   const lost = await Cocktail.findOne({ title: `${name}`})
