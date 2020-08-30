@@ -1,17 +1,32 @@
-<div class="card" style="width: 18rem;">
-    <img src={{coctail.img}}  class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{coctail.title}}</h5>
-
-      <p class="card-text">Рецепт:{{coctail.recipe}}</p>
-      <p class="card-text">Необходимые ингредиенты:{{coctail.ingredients}}</p>
+<link rel="stylesheet" href="../css/details.css">
+<div class="box">
+<div class="boxBorder">
+  <div class="cardBox">
+    <div class="card-img">
+     <img src={{coctail.img}}  class="fotoCoctel" alt="...">
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{coctail.filters}}</li>
-      <li class="list-group-item">{{coctail.titleEng}}</li>
-    </ul>
-    <div class="card-body">
-      <a href="preview/{{coctail.id}}" class="card-link">Подробнее</a>
-      <a href="#" class="card-link">Another link</a>
+
+    <div class="boxForText">
+     <h5 class="nameCards"><b>{{coctail.title}}</b></h5>
+       <b><h5 class="nameCards">{{coctail.titleEng}}</h5></b> 
+        
+        <ul class="group ">
+           {{#each coctail.filters}}
+      <li class="lis">{{this}}</li>
+      {{/each}}
+     </ul>
+
+      <p class="card-Ingredients">
+         <b>Необходимые ингредиенты: </b>
+        <ul class="group ">
+      {{#each coctail.ingredients}}
+      <li class="lis">{{this}}</li>
+      {{/each}}
+         </ul>
+      </p>
+      <p class="card-recipe"><b>Рецепт: </b> {{coctail.recipe}}</p>
+    </div>
     </div>
   </div>
+</div>
+</div>

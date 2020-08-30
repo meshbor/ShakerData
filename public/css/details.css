@@ -1,0 +1,55 @@
+
+.box{
+display: flex;
+justify-content: center;
+width: 1050px;
+height: 60em;
+background-color:  rgba(255, 255, 255, 0.919);
+margin: 1em 25em 1em;
+border-radius: 3px;
+box-shadow: 0 0 14px rgba(0,0,0,0.3);
+}
+.boxBorder{
+display: flex;
+justify-content: center;
+width: 1000px;
+height: 55em;
+background-color:  rgba(255, 255, 255, 0.959);
+border: 1px dotted black;
+margin-top: 10px;
+border-radius: 3px;
+}
+.cardBox{
+  width: 60em;
+  height: 35em;
+  margin: 30px;
+  background-color: rgba(225,225,225,0.41);
+  display: flex;
+  justify-content:flex-start;
+}
+
+
+.card-img{
+  height: 32em;
+  overflow:hidden;
+  width:17em;
+}
+.fotoCoctel{
+  height: 30em;
+  margin: 1px 5px 3px 1px;
+  width:17em;
+}
+
+
+.boxForText{
+float: left;
+width: 39em;
+margin:1px 0px 0px 15px;
+
+}
+
+.nameCards{
+  text-decoration:underline;
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+}

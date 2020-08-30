@@ -6,7 +6,7 @@ const Cocktail = require('../models/cocktail.js')
 // mongoose.connect('mongodb://localhost/cocktailBase', { useNewUrlParser: true, useUnifiedTopology: true });
 router.route('/')
   .get(async (req, res) => {
-    const allCocktall = await Cocktail.findOne({})
+    const allCocktall = await Cocktail.find({})
  
     res.render('coctail/preview', { allCocktall })
   })
@@ -14,7 +14,7 @@ router.route('/')
   .post(async (req, res) => {
     const { qweryInSerch } = req.body;
     console.log(qweryInSerch);
-    const selectCocktail = await Cocktail.find({ title: `${qweryInSerch}` })
+    const selectCocktail = await Cocktail.findOne({ title: `${qweryInSerch}` })
 
     const selectCocktailIngrdients = await Cocktail.find({ ingredients: { $regex: `${qweryInSerch}`, $options: "i" } })
 
@@ -23,8 +23,9 @@ router.route('/')
     // console.log(selectCocktail);
     // console.log(selectCocktailIngrdients);
     // console.log(selectCocktailRecipe);
-    res.status('200')
-    res.end()
+    res.render('preview',{selectCocktail})
+    // res.status('200')
+    // res.end()
   })
 
 router.get('/choosen',async (req, res) => {

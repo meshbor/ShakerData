@@ -13,10 +13,12 @@ input.addEventListener('submit', async (e) => {
       qweryInSerch
     })
   })
-  // const result = await response.json
-  if(response.status === 200){
-    window.location = '/choosen'
-}
-})
+
+  const result = await response.json
+//   if(response.status === 200){
+//     console.log(1234);
+//     window.location = 'preview/choosen'
+// }
+
 
 
