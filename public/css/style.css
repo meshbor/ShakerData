@@ -11,8 +11,12 @@ border-radius: 10px;
 }
 .card{
   margin: 30px;
-  background-color: rgba(225,225,225,0.79);
+  background-color: rgba(253,255,255,0.3);
 
+}
+
+.list-group-item {
+  background-color: rgba(253,255,255,0.04);
 }
 
 body{
@@ -40,4 +44,30 @@ body{
 }
 a{
   color:wheat;
+}
+.card-img-top{
+  width: 18em;
+  height: 30em;
+ margin:3px 5px 3px 7px;
+  border-radius:13px;
+  opacity: 0.9;
+}
+
+.card-title {
+  margin-bottom:.75rem;
+  text-align: center;
+}
+
+
+.about{
+  margin:0 40px 4px ;
+  color: #343a40;
+} 
+
+#serch{
+  height:35px ;
+  width:85em ;
+  border: 1px solid white;
+  border-radius: 8px;
+  margin: 10px 15px 0;
 }

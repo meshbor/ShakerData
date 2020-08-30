@@ -20,6 +20,7 @@ if (user) {
 console.log('net'); 
 }
 })
+
 router.get('/logout', (req,res)=>{
   req.session.destroy();
   res.clearCookie('my_session')

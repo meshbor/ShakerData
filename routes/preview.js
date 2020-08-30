@@ -13,7 +13,7 @@ router.route('/')
   .post(async (req, res) => {
     const { qweryInSerch } = req.body;
     console.log(qweryInSerch);
-    const selectCocktail = await Cocktail.find({ title: `${qweryInSerch}` })
+    const selectCocktail = await Cocktail.findOne({ title: `${qweryInSerch}` })
 
     const selectCocktailIngrdients = await Cocktail.find({ ingredients: { $regex: `${qweryInSerch}`, $options: "i" } })
 
@@ -22,8 +22,9 @@ router.route('/')
     console.log(selectCocktail);
     // console.log(selectCocktailIngrdients);
     // console.log(selectCocktailRecipe);
-    res.status('200')
-    res.end()
+    res.render('preview',{selectCocktail})
+    // res.status('200')
+    // res.end()
   })
 
 router.get('coctail/choosen',async (req, res) => {

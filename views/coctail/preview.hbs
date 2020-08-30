@@ -1,26 +1,49 @@
 <script defer src="js/preview.js"></script>
+
+
+
+
+
 <form id="serchTitle">
   <input type="text" name="name" id="serch" placeholder="Введите название коктеля">
-
-  <button type="submit">click</button>
+ <button type="submit" class="btn btn-warning">Поиск</button>
 </form>
 
 <div class="cardBox">
   {{#each allCocktall}}
-  <div class="card" style="width: 18rem;">
-    <img src={{this.img}}  class="card-img-top" alt="...">
+  <div class="card" style="width: 19em;">
+    <img src={{this.img}} class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{this.title}}</h5>
-</div>
-    <ul class="list-group list-group-flush">
+    </div>
+    <ul class="list-group  list-group-flush">
       <li class="list-group-item">{{this.filters}}</li>
       <li class="list-group-item">{{this.titleEng}}</li>
     </ul>
     <div class="card-body">
-      <a href="/preview/{{this.id}}" class="card-link">Подробнее</a>
-      <a href="#" class="card-link">Another link</a>
+
+      <button type="button" class="btn btn-warning about">
+        <a href="/preview/{{this.id}}" class="card-link about" style="color: #343a40ab;">Подробнее</a></button>
+
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Колличество" aria-label="Recipient's username"
+          aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn-warning" type="button">Button</button>
+        </div>
+
+
+
+      </div>
+
     </div>
   </div>
   {{/each}}
 </div>
 
+{{#if selectCoctail}}
+    true
+{{else}}
+    false
+{{/if}}
