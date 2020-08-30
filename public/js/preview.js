@@ -5,7 +5,7 @@ input.addEventListener('submit', async (e) => {
   e.preventDefault()
   const qweryInSerch = e.target.name.value;
   const response = await fetch('preview', {
-    method: 'post',
+    method: 'POST',
     headers: {
       'content-type': 'application/json',
     },
@@ -13,11 +13,12 @@ input.addEventListener('submit', async (e) => {
       qweryInSerch
     })
   })
+
   const result = await response.json
 //   if(response.status === 200){
 //     console.log(1234);
 //     window.location = 'preview/choosen'
 // }
-})
+
 
 
