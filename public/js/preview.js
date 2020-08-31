@@ -28,16 +28,16 @@ value.addEventListener('submit', async(e)=>{
   e.preventDefault()
   const valuInsearch = e.target.name.value
   // const id = e.target.dataset.id;
-   console.log(e.target);
+   console.log('CHTO TUT TAKOE',e.target);
 
   const response2 = await fetch(`/preview/order/${id}`, {
     method:'POST',
     headers: {
       'content-type': 'application/json',
     },
-    body: JSON.stringify({
-      valueInsearch
-    })
+    // body: JSON.stringify({
+    //   valueInsearch
+    // })
   })
 
   const result = await response2.json;
