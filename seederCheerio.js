@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
 const Cocktail = require('./models/cocktail')
 
-  let page = 1;
-while (page<100) {
+  let page = 100;
+while (page<1200) {
 async function pars(page){
 
 let url = `https://ru.inshaker.com/cocktails/${page}`

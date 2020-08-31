@@ -58,19 +58,30 @@ router.get('/order/:id', async (req, res) => {
 
 router.post('/order/:id', async (req, res) => {
 
-  const input = req.body.num;
-  console.log(input);
-
-  const find = await Cocktail.findById(req.params.id)
-  console.log('coctail from base >>>',find.title);
-  let resultTemp = [[find.title,input]];
-  console.log('ITOGO>>>>',resultTemp);
-  const resultShop = await fullOrder([[find.title,input]])
-  await console.log(resultShop);
-
+  const   valueInsearch  = req.body;
+    await console.log(' valueInsearch >>>>>',valueInsearch);
+    const find = await Cocktail.findById(req.params.id)
+    console.log('coctail from base >>>',find.title);
+    let resultTemp = [[find.title,valueInsearch.name]];
+    console.log('ITOGO>>>>',resultTemp);
+    const resultShop = await fullOrder([[find.title,valueInsearch.name]])
+    // alert(`вы добавили ${find.title} в список закупок в количестве ${valueInsearch.name} шт`)
+    await console.log(resultShop);
+  
   const array = find.ingredients;
- console.log(input,find,array)
+//  console.log(input,find,array)
 
+//  router.post('/order/:id', async (req, res) => {
+//   const   valueInsearch  = req.body;
+//   await console.log(' valueInsearch >>>>>',valueInsearch);
+//   const find = await Cocktail.findById(req.params.id)
+//   console.log('coctail from base >>>',find.title);
+//   let resultTemp = [[find.title,valueInsearch.name]];
+//   console.log('ITOGO>>>>',resultTemp);
+//   const resultShop = await fullOrder([[find.title,valueInsearch.name]])
+//   await console.log(resultShop);
+
+//   const array = find.ingredients;
 
   res.render('coctail/order', { find })
 })
