@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
-const Cocktail = require('./models/cocktail')
-const Order = require('./models/order');
-let volumeOrder = 0;
 
 async function fullOrder(arrayofValue) {
   let express = require('express');
   // let app = express();
-
+  
+  const Cocktail = require('./models/cocktail')
+  const Order = require('./models/order');
+  let volumeOrder = 0;
 
 for (let i = 0; i < arrayofValue.length; i++) {
   let yourOrder = await Cocktail.findOne({ title: `${arrayofValue[i][0]}`});

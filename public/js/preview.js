@@ -26,19 +26,25 @@
 const a = document.querySelector('#value')
 a.addEventListener('submit', async (e) => {
   e.preventDefault()
+
  // const num = e.target
  const num = e.target.name.value;
  const id = e.target.dataset.id;
   console.log(num,id);
+
+
 
   const responses = await fetch(`/preview/order/${id}`, {
     method:'POST',
     headers:{
       'Content-Type': 'application/json',
     },
+
     body: JSON.stringify({
       num,
     }),
+
+
   })
 
   const result = await responses.json();

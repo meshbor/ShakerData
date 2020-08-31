@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Cocktail = require('../models/cocktail.js')
-const {fullOrder} =require('../shop');
-const Order=require('../models/order')
+
+const Order = require('../models/order');
+const {fullOrder} =require('../shop')
+
 
 // mongoose.connect('mongodb://localhost/cocktailBase', { useNewUrlParser: true, useUnifiedTopology: true });
 router.route('/')
@@ -55,9 +57,17 @@ router.get('/order/:id', async (req, res) => {
 })
 
 router.post('/order/:id', async (req, res) => {
+
   const input = req.body.num;
   console.log(input);
+
   const find = await Cocktail.findById(req.params.id)
+  console.log('coctail from base >>>',find.title);
+  let resultTemp = [[find.title,input]];
+  console.log('ITOGO>>>>',resultTemp);
+  const resultShop = await fullOrder([[find.title,input]])
+  await console.log(resultShop);
+
   const array = find.ingredients;
  console.log(input,find,array)
 

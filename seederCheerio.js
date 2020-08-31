@@ -5,10 +5,9 @@ let cheerio = require('cheerio');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
 const Cocktail = require('./models/cocktail')
-let counter = 1;
-  
-  let page = 100;
-while (page<600) {
+
+  let page = 1;
+while (page<100) {
 async function pars(page){
 
 let url = `https://ru.inshaker.com/cocktails/${page}`
@@ -19,10 +18,8 @@ await request(url, async (error,response,html) =>{
     const title = $('.common-name').text();
     const titleEn = $('.name-en').text();
     const exist = await Cocktail.findOne({titleEng: `${titleEn}`})
-    if (exist !== null) { //  есть такой в базе, чтобы не создавать дубли
-      console.log(` такой уже есть ${exist.titleEng}`);
-    } 
-    if (exist !== null && titleEn === exist.titleEng) { console.log(` ${title} уже есть в базе `);
+     //  есть такой в базе, чтобы не создавать дубли
+      if (exist !== null && titleEn === exist.titleEng) { console.log(` ${title} уже есть в базе `);
       } else {
     const recipe = $('.steps').text();
     const description = $('.body').text();
@@ -75,11 +72,11 @@ await request(url, async (error,response,html) =>{
       description: description,
     })
     await oneCocktail.save();
-     await console.log(oneCocktail.title);
+     await console.log(oneCocktail);
   }
 }
   else {
-  await console.log(`страница ${page} не загрузилась`);
+  await console.log(`Коктейля под номером ${page} нет на сайте`);
   }
 
 });
