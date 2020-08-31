@@ -1,3 +1,13 @@
-<div>
-  {{find}}
-</div>
+<div class="card" style="width: 18rem;">
+    <img src={{find.img}}  class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{find.title}}</h5>
+
+      <p class="card-text">Рецепт:{{find.recipe}}</p>
+      <p class="card-text">Необходимые ингредиенты:{{find.ingredients}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{find.filters}}</li>
+      <li class="list-group-item">{{find.titleEng}}</li>
+    </ul>
+    </div>

@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Cocktail = require('../models/cocktail.js')
-const {fullOrder} =require('../shop')
+const {fullOrder} =require('../shop');
+const Order=require('../models/order')
 
 // mongoose.connect('mongodb://localhost/cocktailBase', { useNewUrlParser: true, useUnifiedTopology: true });
 router.route('/')
@@ -54,19 +55,13 @@ router.get('/order/:id', async (req, res) => {
 })
 
 router.post('/order/:id', async (req, res) => {
-  const {  valueInsearch } = req.body;
-  console.log({  valueInsearch });
+  const input = req.body.num;
+  console.log(input);
   const find = await Cocktail.findById(req.params.id)
   const array = find.ingredients;
-  // console.log(value,find,array)
-  // let number
-  // for (let i = 0; i < array.length; i++) {
-  //   number = array[i][1]
-  //   console.log(number)
-  // }
-  // res.json({
-  //   success: true
-  // })
+ console.log(input,find,array)
+
+
   res.render('coctail/order', { find })
 })
 
