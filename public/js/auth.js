@@ -19,7 +19,7 @@ registerForm.addEventListener('submit', async (e)=>{
   console.log(email,password);
   
   if (response.status === 200) { 
-    window.location = '/main'
+    window.location = '/login'
     
   }
   

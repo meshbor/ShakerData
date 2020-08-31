@@ -15,7 +15,7 @@ loginForm.addEventListener('submit', async (e)=>{
   }),
 })
 if(response.status === 200){
-  window.location = '/login'
+  window.location = '/preview'
 }
 
   console.log(email); 
