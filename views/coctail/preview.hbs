@@ -4,7 +4,7 @@
 
 
 
-<form id="serchTitle">
+<form id="serchTitle" method = "PUT" action = "/preview/choosen">
   <input type="text" name="name" id="serch" placeholder="Введите название коктеля">
  <button type="submit" class="btn btn-warning">Поиск</button>
 </form>
@@ -27,10 +27,12 @@
 
 
       <div class="input-group mb-3">
+        <form id="value" action="/preview/order/{{id}}" method="POST" data-id="{{id}}">
         <input type="text" class="form-control" placeholder="Колличество" aria-label="Recipient's username"
-          aria-describedby="basic-addon2">
+          aria-describedby="basic-addon2" name="name">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn-warning" type="button">Button</button>
+          <button class="btn btn-outline-secondary btn-warning" type="submit">Button</button>
+          </form>
         </div>
 
 
@@ -41,9 +43,3 @@
   </div>
   {{/each}}
 </div>
-
-{{#if selectCoctail}}
-    true
-{{else}}
-    false
-{{/if}}
