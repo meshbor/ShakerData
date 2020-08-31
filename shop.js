@@ -59,5 +59,5 @@ for (let i = 0; i < arrayofValue.length; i++) {
 //   ['Иностранный легион',10],
   
 // ]
-fullOrder();
+//fullOrder();
 module.exports = {fullOrder}

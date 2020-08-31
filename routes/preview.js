@@ -59,11 +59,11 @@ router.post('/order/:id', async (req, res) => {
   const find = await Cocktail.findById(req.params.id)
   const array = find.ingredients;
   // console.log(value,find,array)
-  let number
-  for (let i = 0; i < array.length; i++) {
-    number = array[i][1]
-    console.log(number)
-  }
+  // let number
+  // for (let i = 0; i < array.length; i++) {
+  //   number = array[i][1]
+  //   console.log(number)
+  // }
   // res.json({
   //   success: true
   // })

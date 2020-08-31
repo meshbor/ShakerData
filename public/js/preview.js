@@ -28,7 +28,8 @@ value.addEventListener('submit', async(e)=>{
   e.preventDefault()
   const valuInsearch = e.target.name.value
   // const id = e.target.dataset.id;
-   console.log(valuInsearch);
+   console.log(e.target);
+
   const response2 = await fetch(`/preview/order/${id}`, {
     method:'POST',
     headers: {
