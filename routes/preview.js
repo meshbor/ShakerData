@@ -2,18 +2,19 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Cocktail = require('../models/cocktail.js')
+const {fullOrder} =require('../shop')
 
 // mongoose.connect('mongodb://localhost/cocktailBase', { useNewUrlParser: true, useUnifiedTopology: true });
 router.route('/')
   .get(async (req, res) => {
     const allCocktall = await Cocktail.find({})
- 
+
     res.render('coctail/preview', { allCocktall })
   })
   //.limit(10){title:`${ qweryInSerch }`}
   .post(async (req, res) => {
     const { qweryInSerch } = req.body;
-    console.log(qweryInSerch);
+    console.log('input >>>>',qweryInSerch);
     const selectCocktail = await Cocktail.findOne({ title: `${qweryInSerch}` })
 
     const selectCocktailIngrdients = await Cocktail.find({ ingredients: { $regex: `${qweryInSerch}`, $options: "i" } })
@@ -23,30 +24,56 @@ router.route('/')
     // console.log(selectCocktail);
     // console.log(selectCocktailIngrdients);
     // console.log(selectCocktailRecipe);
-    res.render('preview',{selectCocktail})
+    res.render('preview')
     // res.status('200')
     // res.end()
   })
 
-router.get('/choosen',async (req, res) => {
+router.get('/choosen', async (req, res) => {
   const { name } = req.query;
-  console.log(name);
-  const lost = await Cocktail.findOne({ title: `${name}`})
-// console.log(lost);
-  res.render('coctail/choosen', {lost})
+  console.log('choosen cocktail >>>>',name);
+  const lost = await Cocktail.findOne({ title: `${name}` })
+  // console.log(lost);
+  res.render('coctail/choosen', { lost })
 })
 
-router.post('/choosen', async (req, res) => {
+router.put('/choosen', async (req, res) => {
   const { qweryInSerch } = req.body;
-  // console.log(qweryInSerch);
+  console.log(qweryInSerch);
   const selectCocktail = await Cocktail.findOne({ title: `${qweryInSerch}` })
-  res.render('coctail/choosen',{ selectCocktail })
+
+  res.json({
+    success: true
+  })
 })
+
+router.get('/order/:id', async (req, res) => {
+  const find = await Cocktail.findById(req.params.id)
+  console.log('искомый коктейль',find);
+ res.render('coctail/order', { find })
+})
+
+router.post('/order/:id', async (req, res) => {
+  const {  valueInsearch } = req.body;
+  console.log({  valueInsearch });
+  const find = await Cocktail.findById(req.params.id)
+  const array = find.ingredients;
+  // console.log(value,find,array)
+  let number
+  for (let i = 0; i < array.length; i++) {
+    number = array[i][1]
+    console.log(number)
+  }
+  // res.json({
+  //   success: true
+  // })
+  res.render('coctail/order', { find })
+})
+
 
 router.get('/:id', async (req, res, next) => {
   const coctail = await Cocktail.findById(req.params.id)
   // console.log(coctail);
-
   return res.render('coctail/coctail', { coctail });
 });
 

@@ -1,12 +1,13 @@
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
+const Cocktail = require('./models/cocktail')
+const Order = require('./models/order');
+let volumeOrder = 0;
 
 async function fullOrder(arrayofValue) {
   let express = require('express');
   // let app = express();
-  const mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/GrishaProject', { useNewUrlParser: true, useUnifiedTopology: true });
-  const Cocktail = require('./models/cocktail')
-  const Order = require('./models/order');
-  let volumeOrder = 0;
+
 
 for (let i = 0; i < arrayofValue.length; i++) {
   let yourOrder = await Cocktail.findOne({ title: `${arrayofValue[i][0]}`});
@@ -44,19 +45,19 @@ for (let i = 0; i < arrayofValue.length; i++) {
 
 
 
-let arrayofValue = [
-  ['Белый русский',10],
-  ['Бабулин сад',10],
-  ['Иностранный легион',10],
-  ['что это такое',20]
-  ['Московский мул',1],
-  ['Эль бискоти',10],
-  ['Виски сауэр',10],
-  ['Белый русский',10],
-  ['Дайкири',10],
-  ['Кровавая Мэри',10],
-  ['Иностранный легион',10],
+// let arrayofValue = [
+//   ['Белый русский',10],
+//   ['Бабулин сад',10],
+//   ['Иностранный легион',10],
+//   ['что это такое',20]
+//   ['Московский мул',1],
+//   ['Эль бискоти',10],
+//   ['Виски сауэр',10],
+//   ['Белый русский',10],
+//   ['Дайкири',10],
+//   ['Кровавая Мэри',10],
+//   ['Иностранный легион',10],
   
-]
-fullOrder(arrayofValue);
+// ]
+fullOrder();
 module.exports = {fullOrder}
